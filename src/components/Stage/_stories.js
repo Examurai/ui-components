@@ -25,7 +25,7 @@ const OPTIONS = [
   {
     name: 'Другие работы',
     startDate: null,
-    finishDate: '24.02.2018',
+    finishDate: '24.02.2019',
     stages: [
       {start: true, timeLimit: true},
       {start: true, timeLimit: true},
@@ -36,13 +36,13 @@ const OPTIONS = [
       {start: true, timeLimit: true},
       {start: true, timeLimit: true},
       {start: true, timeLimit: true},
-      {start: false},
+      {start: true, timeLimit: true},
     ]
   },
   {
     name: 'Другие работы2',
     startDate: '24.02.2018',
-    finishDate: '24.02.2018',
+    finishDate: '24.02.2019',
     stages: [
       {start: false},
       {start: false},

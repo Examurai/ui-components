@@ -25,7 +25,7 @@ class Stage extends Component {
   render() {
     const {steps, name} = this.props
     const stageWidth = 100 / steps.stages.length + '%'
-    const finish = steps.finishDate === null && steps.startDate === null
+    const finish = this.getReadyStages() === steps.stages.length
 
     return(
       <Container>
@@ -55,7 +55,6 @@ class Stage extends Component {
             <span>{steps.finishDate !== null ? 'Завершение: ' + steps.finishDate : ''}</span>
           </Dates>
         }
-
       </Container>
     )
   }
