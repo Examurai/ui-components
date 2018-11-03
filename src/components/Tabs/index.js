@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {TabsList, TabsItem} from "./styles";
+import {TabsContainer, TabsList, TabsItem} from './styles';
 
 const OPTIONS = [
   {id: 0, title: 'Tab #1'},
   {id: 1, title: 'Tab #2'},
+  {id: 2, title: 'Tab #3'},
 ]
 
 class Tabs extends Component {
@@ -21,19 +22,21 @@ class Tabs extends Component {
   render() {
     const {options, onChangeTab, active} = this.props
     return (
-      <TabsList>
-        {options.map((item, key) => {
-          return (
-            <TabsItem
-              className={item.id === active && 'selected '}
-              key={key}
-              onClick={() => onChangeTab(item.id)}
-            >
-              <span>{item.title}</span>
-            </TabsItem>
-          )
-        })}
-      </TabsList>
+      <TabsContainer>
+        <TabsList>
+          {options.map((item, key) => {
+            return (
+              <TabsItem
+                className={item.id === active && 'selected '}
+                key={key}
+                onClick={() => onChangeTab(item.id)}
+              >
+                <span>{item.title}</span>
+              </TabsItem>
+            )
+          })}
+        </TabsList>
+      </TabsContainer>
     )
   }
 }
@@ -41,11 +44,11 @@ class Tabs extends Component {
 // Example
 export default class DefaultUseTabs extends Component {
   state = {
-    type: 0
+    tabId: 0
   }
 
   render() {
-    let current = this.state.type
+    let current = this.state.tabId
     return(
       <div>
         <Tabs
@@ -53,16 +56,16 @@ export default class DefaultUseTabs extends Component {
           onChangeTab={this.handleChangeTab}
           options={OPTIONS}
         />
-        {this.state.type == 0 && <div>Hello, tab #1</div>}
-        {this.state.type == 1 && <div>Hello, tab #2</div>}
+        {this.state.tabId == 0 && <div>Hello, tab #1</div>}
+        {this.state.tabId == 1 && <div>Hello, tab #2</div>}
       </div>
     )
   }
 
   handleChangeTab = (e) => {
-    let type = e
+    let id = e
     this.setState({
-      type: type
-    }, () => {console.log(this.state.type), 'type'})
+      tabId: id
+    }, () => {console.log(this.state.tabId), 'tabId'})
   }
 }
