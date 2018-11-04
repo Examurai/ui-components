@@ -1,26 +1,34 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import Icon from '../IconSprite'
+import {ButtonContainer} from './styles'
 
 class Button extends Component {
   static propTypes = {
     disabled: PropTypes.bool,
     text: PropTypes.any,
-    style: PropTypes.object,
     onClick: PropTypes.func,
+    icon: PropTypes.string,
+    type: PropTypes.string
+  }
+
+  static defaultProps = {
+    onClick: () => onClick
   }
 
   render() {
-    const numbers = [12, 3, 7, 9, 10, 5]
-
-    for (let i = 0; i <= numbers.length - 2; i++) {
-      let minValue = numbers[i]
-
-      //console.log(minValue)
-
-    }
+    const {
+      disabled,
+      text,
+      icon,
+      type
+    } = this.props
 
     return (
-      <div>Btn</div>
+      <ButtonContainer>
+        {/*<Icon name={'arrow-left'}/>*/}
+        <span>{text}</span>
+      </ButtonContainer>
     )
   }
 }

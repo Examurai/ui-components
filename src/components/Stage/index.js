@@ -25,7 +25,6 @@ class Stage extends Component {
   getStages = () => {
     const {steps} = this.props
     const stageWidth = 100 / steps.stages.length + '%'
-
     const result = steps.stages.map((item, i) => {
       let color = 'inherit'
 
@@ -54,7 +53,6 @@ class Stage extends Component {
           <Info>Выполнено работ:&nbsp;
             <span style={{color: finishColor}}>{this.getReadyStages()}</span>&nbsp;
             <span style={{color: finishColor}}>из {steps.stages.length}</span>
-
           </Info>
         </Head>
         <StageLine>

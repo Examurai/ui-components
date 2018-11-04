@@ -9,6 +9,8 @@ storiesOf('Button', module)
   .addDecorator(withKnobs)
   .add('default', () => (
     <div style={{ display: 'flex'}}>
-      <Button/>
+      <Button
+        text={'hello'}
+      />
     </div>
   ))

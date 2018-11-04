@@ -66,6 +66,6 @@ export default class DefaultUseTabs extends Component {
     let id = e
     this.setState({
       tabId: id
-    }, () => {console.log(this.state.tabId), 'tabId'})
+    }, () => {'tabId'})
   }
 }
