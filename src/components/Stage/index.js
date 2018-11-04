@@ -43,14 +43,18 @@ class Stage extends Component {
   render() {
     const {steps, name} = this.props
     const finish = this.getReadyStages() === steps.stages.length
+    const successColor = 'green'
+    const failColor = 'inherit'
+    const finishColor = finish ? successColor : failColor
 
     return(
       <Container>
         <Head>
           <Title>{name}</Title>
           <Info>Выполнено работ:&nbsp;
-            <span>{this.getReadyStages()}</span>
-            &nbsp;из {steps.stages.length}
+            <span style={{color: finishColor}}>{this.getReadyStages()}</span>&nbsp;
+            <span style={{color: finishColor}}>из {steps.stages.length}</span>
+
           </Info>
         </Head>
         <StageLine>
