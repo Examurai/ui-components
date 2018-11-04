@@ -14,7 +14,7 @@ class Stage extends Component {
 
   getReadyStages = () => {
     let readyStages = 0
-    this.props.steps.stages.map((item, i) => {
+    this.props.steps.stages.map((item) => {
       if (item.start) {
         readyStages++
       }
@@ -22,9 +22,26 @@ class Stage extends Component {
     return readyStages
   }
 
+  getStages = () => {
+    const {steps} = this.props
+    const stageWidth = 100 / steps.stages.length + '%'
+
+    const result = steps.stages.map((item, i) => {
+      let color = 'inherit'
+
+      if(item.start && item.timeLimit) {
+        color = 'green'
+      } else if (item.start && !item.timeLimit) {
+        color = 'red'
+      }
+      return <StageItem key={i} style={{width: stageWidth, backgroundColor: color}}/>
+    })
+
+    return result
+  }
+
   render() {
     const {steps, name} = this.props
-    const stageWidth = 100 / steps.stages.length + '%'
     const finish = this.getReadyStages() === steps.stages.length
 
     return(
@@ -37,17 +54,7 @@ class Stage extends Component {
           </Info>
         </Head>
         <StageLine>
-          {steps.stages.map((item, i) => {
-            let color = 'inherit'
-
-            if(item.start && item.timeLimit) {
-              color = 'green'
-            } else if (item.start && !item.timeLimit) {
-              color = 'red'
-            }
-
-            return <StageItem key={i} style={{width: stageWidth, backgroundColor: color}}/>
-          })}
+          {this.getStages()}
         </StageLine>
         {!finish &&
           <Dates>

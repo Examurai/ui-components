@@ -54,7 +54,7 @@ const OPTIONS = [
       {start: false},
       {start: false},
       {start: false},
-      {start: false},
+      {start: true, timeLimit: true},
       {start: false},
     ]
   },
